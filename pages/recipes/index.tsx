@@ -21,13 +21,7 @@ const Recipes = () => {
           {recipes?.length > 0 &&
             recipes?.map((recipe: Recipe, recipeIndex: number) => {
               return (
-                <Link
-                  href={{
-                    pathname: `${asPath}/${recipe.name}`,
-                    query: { id: recipeIndex },
-                  }}
-                  key={recipeIndex}
-                >
+                <Link href={`${asPath}/${recipeIndex}`} key={recipeIndex}>
                   <ListGroupItem>
                     <Image
                       src={recipe.thumbnail}

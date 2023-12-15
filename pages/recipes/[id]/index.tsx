@@ -15,10 +15,13 @@ const Recipe = () => {
   useEffect(() => {
     if (router?.query?.id) {
       const recipeInstructions = [];
-      const active =
-        recipes.filter(
-          (recipe: Recipe) => recipe.name === router?.query?.id
-        )[0] || {};
+      let activeIndex = 0;
+
+      if (typeof router?.query?.id === "string") {
+        activeIndex = parseInt(router?.query?.id);
+      }
+
+      const active = recipes[activeIndex] || {};
 
       if (Object.keys(active).length > 0) {
         for (const [_, value] of Object.entries(active?.instructions)) {

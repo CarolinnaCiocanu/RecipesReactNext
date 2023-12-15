@@ -21,6 +21,10 @@
       text-decoration: none;
       text-transform: capitalize;
 
+      &.disabled {
+        pointer-events: none;
+      }
+
       svg {
         &:first-child {
           margin-right: 5px;

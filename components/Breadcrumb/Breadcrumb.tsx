@@ -3,8 +3,10 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FaHome, FaArrowRight } from "react-icons/fa";
 import cn from "classnames";
+import { useSelector } from "react-redux";
 
 const Breadcrumb = () => {
+  const { recipes } = useSelector((state: any) => state.GeneralReducer);
   const router = useRouter();
   const [breadcrumbItems, setBreadcrumbItems] = useState<string[]>([]);
 
@@ -19,6 +21,14 @@ const Breadcrumb = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.asPath]);
 
+  const checkForRecipeName = (item: string): string => {
+    if (parseInt(item)) {
+      return recipes[parseInt(item)]?.name;
+    }
+
+    return item;
+  };
+
   return (
     <div className="breadcrumb-wrapper">
       <div className="breadcrumb-link">
@@ -28,17 +38,17 @@ const Breadcrumb = () => {
       </div>
 
       {breadcrumbItems.map((item, index) => {
+        const isActive = index === breadcrumbItems.length - 1;
+
         return (
           <div
             className={cn("breadcrumb-link", {
-              active: index === breadcrumbItems.length - 1,
+              active: isActive,
             })}
             key={index}
           >
-            <Link href={`/${item}`}>
-              {index === breadcrumbItems.length - 1 && router?.query?.id
-                ? router?.query?.id
-                : item}
+            <Link href={`/${item}`} className={`${isActive && "disabled"}`}>
+              {checkForRecipeName(item)}
               {index < breadcrumbItems.length - 1 && <FaArrowRight />}
             </Link>
           </div>
