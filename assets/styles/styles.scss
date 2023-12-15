@@ -1,0 +1,88 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.page-wrapper {
+  min-height: calc(100vh - 120px);
+}
+
+// Home Page Styles
+.home-wrapper {
+  padding-left: 15px;
+  text-align: center;
+
+  .title {
+    color: #637382;
+  }
+
+  a {
+    color: #6c37ff;
+    text-decoration: none;
+  }
+}
+
+// Recipes page Styles
+.recipes-wrapper {
+  padding: 20px 0px 50px 0px;
+
+  .list-group {
+    a {
+      text-decoration: none;
+
+      .list-group-item {
+        align-items: center;
+        display: flex;
+        justify-content: flex-start;
+
+        .recipe-name {
+          margin-left: 20px;
+        }
+
+        span {
+          color: #6c37ff;
+          margin-left: auto;
+          text-decoration: none;
+        }
+
+        @media screen and (max-width: 768px) {
+          flex-direction: column;
+
+          .recipe-name {
+            text-align: center;
+            margin-left: 0px;
+          }
+
+          span {
+            margin-left: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Active Recipe page styles
+.active-recipe {
+  .content {
+    &.right {
+      .avatar {
+        background: grey;
+        border-radius: 5px;
+        height: 50px;
+        width: 50px;
+      }
+
+      .card-footer {
+        .title {
+          font-weight: 500;
+        }
+
+        .list-group-item {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

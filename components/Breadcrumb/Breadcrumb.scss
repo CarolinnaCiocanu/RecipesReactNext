@@ -1,0 +1,35 @@
+.breadcrumb-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0px;
+
+  .breadcrumb-link {
+    margin-right: 15px;
+
+    &.active {
+      a {
+        color: #6c37ff;
+      }
+    }
+
+    a {
+      align-items: center;
+      color: #637382;
+      display: flex;
+      font-weight: 400;
+      font-size: 16px;
+      text-decoration: none;
+      text-transform: capitalize;
+
+      svg {
+        &:first-child {
+          margin-right: 5px;
+        }
+
+        &:last-child {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}
